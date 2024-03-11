@@ -2,6 +2,7 @@ const display = document.querySelector(".counter-preview");
 const allBtns = document.querySelector("#allBtns");
 const hamMenu = document.querySelector(".ham-menu");
 const offScreenMenu = document.querySelector(".off-screen-menu");
+const navbar = document.querySelector(".navbar")
 allBtns.addEventListener("click", counter);
 let value = 0;
 if (localStorage.getItem("countValue")) {
@@ -17,7 +18,7 @@ function counter(e) {
     value = 0;
   }
 
-  display.textContent = value;
+  display.textContent = value; 
   localStorage.setItem("countValue", value);
 }
 
@@ -29,3 +30,13 @@ hamMenu.addEventListener("click", () => {
 window.onload = function () {
   display.textContent = localStorage.getItem("countValue");
 };
+
+window.addEventListener("scroll", ()=>{
+  if(document.documentElement.scrollTop > 40)
+  {
+    navbar.style.backgroundColor = "green"
+  }
+  else{
+    navbar.style.backgroundColor= "";
+  }
+})
